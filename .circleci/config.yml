@@ -1,0 +1,93 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          PG_HOST: 127.0.0.1
+          PG_USERNAME: root
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_USER: root
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Use latest Bundler
+      - run:
+          name: Update RubyGem & Bundler
+          command: |
+            sudo gem update --system
+            gem install bundler
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v2-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle --with test circle_ci
+
+      - save_cache:
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            - v2-dependencies-
+
+      - run:
+          name: Install Yarn dependencies
+          command: |
+             bin/yarn install --check-files
+
+      - save_cache:
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Copy configs
+          command: |
+            cp .circleci/app_config/database.yml config/database.yml
+            cp config/mailer.yml.example config/mailer.yml
+            cp config/credentials.yml.example config/credentials.yml
+            bin/rails credentials:encrypt
+
+      # Database setup
+      - run: bin/rails db:setup
+
+      # run tests!
+      - run:
+          name: Run tests
+          command: |
+            mkdir /tmp/test-results
+            bin/rails test
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
