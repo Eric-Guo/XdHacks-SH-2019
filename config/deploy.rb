@@ -2,7 +2,7 @@
 lock "~> 3.11.1"
 
 set :application, "cam_price"
-set :repo_url, "git@gitee.com:hackerTeam2019/cam_price.git"
+set :repo_url, "https://github.com/Eric-Guo/XdHacks-SH-2019.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
