@@ -4,9 +4,26 @@ import { CamPlay } from './cam_play'
 import { CamProgress } from './cam_progress'
 
 export class CamApp extends Component {
-  state = {
-    item_no: 1
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_no: 1
+    };
+    this.handleGoPrev = this.handleGoPrev.bind(this);
+    this.handleGoNext = this.handleGoNext.bind(this);
+  }
+
+  handleGoPrev() {
+    this.setState({
+      item_no: this.state.item_no - 1
+    });
+  }
+
+  handleGoNext() {
+    this.setState({
+      item_no: this.state.item_no + 1
+    });
+  }
 
   render() {
     return (
@@ -14,7 +31,11 @@ export class CamApp extends Component {
   <div className="col-md-7">
     <div className="cam_wrapper">
       <div className="player">
-        <CamPlay item_no={ this.state.item_no } />
+        <CamPlay
+          item_no={ this.state.item_no }
+          onPrev={this.handleGoPrev}
+          onNext={this.handleGoNext}
+        />
         <CamProgress />
       </div>
     </div>
