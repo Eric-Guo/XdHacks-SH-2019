@@ -1,11 +1,12 @@
 import React from 'react'
 
 export const CamPlay = (props) => {
+  const jpg_path = "url('/img/"+ props.item_no +".jpg')";
   return (
     <div className="player__top">
       <div className="player-cover">
         <span>
-          <div className="player-cover__item" style={{ backgroundImage: "url('https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg')"}}></div>
+          <div className="player-cover__item" style={{ backgroundImage: jpg_path }}></div>
         </span>
       </div>
       <div className="player-controls">
