@@ -6,16 +6,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import { CamPlay } from '../components/cam_play'
+import { CamProgress } from '../components/cam_progress'
+
+
 const CamItem = (props) => {
   return (
   <div className="player">
-    <div className="player__top">
-      <div className="player-cover">
-        <span>
-          <div className="player-cover__item" style={{ backgroundImage: "url('https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg')"}}></div>
-        </span>
-      </div>
-    </div>
+    <CamPlay />
+    <CamProgress />
   </div>
   )
 }
