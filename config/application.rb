@@ -26,7 +26,7 @@ Dir[Pathname.new(File.dirname(__FILE__)).realpath.parent.join("lib", "monkey_pat
   require file
 end
 
-module CybrosCore
+module CamPrice
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -91,7 +91,7 @@ module CybrosCore
     #   config.action_mailer.default_url_options = Settings.url_options.to_h
     # end
 
-    # config.time_zone = "Asia/Shanghai"
-    # config.i18n.default_locale = "zh-CN"
+    config.time_zone = "Asia/Shanghai"
+    config.i18n.default_locale = "zh-CN"
   end
 end

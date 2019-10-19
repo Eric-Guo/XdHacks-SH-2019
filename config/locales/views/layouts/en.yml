@@ -1,19 +1,21 @@
+---
 en:
   layouts:
     header:
-      brand: "Cybros Core"
+      brand: "Cam Price"
       account_menu:
         admin: "Administration"
         profile: "Edit Profile"
         sign_out: "Sign Out"
     footer:
-      copyright: "© 2019 Jasl, MIT license"
+      copyright: "© 2019 Hacker Team"
     sidebar:
       application:
         home: "Home"
       accounts:
         profile: "Profile"
         password: "Password"
+        application: "Application"
       admin:
         home: "Home"
         users: "Users"

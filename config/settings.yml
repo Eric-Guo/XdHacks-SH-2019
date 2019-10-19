@@ -1,7 +1,7 @@
 ---
 seo_meta:
-  name: Cybros Core
-  description: Cybros Core
+  name: Cam Price
+  description: Show price and item for customer
   keywords: []
 
 # url_options:
@@ -9,4 +9,4 @@ seo_meta:
 #  protocol: http
 
 admin:
-  emails: []
+  emails: ["eric@cloud-mes.com", "shin.php@gmail.com"]

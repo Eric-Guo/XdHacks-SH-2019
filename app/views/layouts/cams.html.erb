@@ -1,0 +1,16 @@
+<% content_for :content do %>
+  <div class="app-body">
+    <main class="main">
+      <div class="main-header-wrapper">
+        <%= render "layouts/application/notice" %>
+      </div>
+      <div class="container-fluid" id="main">
+        <%= yield %>
+      </div>
+    </main>
+  </div>
+  <%= render "layouts/application/footer" %>
+<% end %>
+
+<%= render template: "layouts/base" %>
+

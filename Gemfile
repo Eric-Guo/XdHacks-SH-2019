@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 2.6.3"
+ruby "~> 2.6.5"
 
 gem "rails", "~> 6.0.0"
 gem "rails-i18n"
@@ -15,6 +15,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.2.1"
 # Use development version of Webpacker
 gem "webpacker", "~> 4.0"
+gem "react-rails"
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
@@ -38,6 +39,7 @@ gem "config"
 gem "devise"
 gem "devise_invitable"
 gem "devise-i18n"
+gem "devise-jwt"
 
 gem "meta-tags"
 
@@ -60,6 +62,11 @@ group :development do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
 end
 
 group :test do

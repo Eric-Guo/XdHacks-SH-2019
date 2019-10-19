@@ -1,0 +1,25 @@
+---
+en:
+  accounts:
+    jwts:
+      index:
+        title: "Manage your applications and jwts"
+        table:
+          user: "User"
+          jti: "JWT ID"
+          aud: "Audience"
+          exp: "Token expire time"
+          exp_relative: "Token relative expire time"
+        form:
+          aud: "Audience"
+          exp_hours: "Expiration hours"
+        actions:
+          create: "Create"
+          delete: "Delete"
+          clean_expired_jwts: "Clean expired jwts"
+      create:
+        created: "New JWT Token created, please record down the token and it will only appears this time! Bearer %{jwt}"
+      destroy:
+        deleted: "Deleted"
+      clean_expired_jwts:
+        done: "All expired jwts is cleaned."

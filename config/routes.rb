@@ -1,9 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :cams, only: [:show]
+
   namespace :account, module: "accounts" do
     resource :password, only: %i[show update]
     resource :profile, only: %i[show update]
+    resources :jwts, only: %i[index create destroy] do
+      collection do
+        delete :clean_expired_jwts
+      end
+    end
+  end
+
+  namespace :api do
+    match "me" => "application#user_info", via: :options
   end
 
   namespace :admin do

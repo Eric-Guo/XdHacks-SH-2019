@@ -1,0 +1,25 @@
+---
+zh-CN:
+  accounts:
+    jwts:
+      index:
+        title: "管理应用程序及其授权"
+        table:
+          user: "用户"
+          jti: "JWT ID"
+          aud: "Audience"
+          exp: "token 过期时间"
+          exp_relative: "相对过期时间"
+        form:
+          aud: "Audience"
+          exp_hours: "过期时间(小时)"
+        actions:
+          create: "创建"
+          delete: "删除"
+          clean_expired_jwts: "清理已经过期的JWT"
+      create:
+        created: "新的JWT令牌创建，请记下这个令牌，次令牌只会出现一次！Bearer %{jwt}"
+      destroy:
+        deleted: "已删除"
+      clean_expired_jwts:
+        done: "所有已经过期的JWT已经清理。"

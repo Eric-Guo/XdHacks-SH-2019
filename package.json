@@ -1,22 +1,28 @@
 {
-  "name": "cybros",
+  "name": "cam_price",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "syncyarnlock": "syncyarnlock -s -k && yarn install --check-files"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@coreui/coreui": "^2.1.12",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.0.7",
     "@stimulus/polyfills": "^1.1.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.3.1",
     "core-js": "^3.2.1",
     "jquery": "^3.4.1",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.15.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react_ujs": "^2.6.0",
     "regenerator-runtime": "^0.13.3",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
