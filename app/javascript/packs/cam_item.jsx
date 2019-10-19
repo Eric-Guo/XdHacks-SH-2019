@@ -8,7 +8,7 @@ const render_cam_item = () => {
   return (
    ReactDOM.render(
      <CamApp />,
-     document.getElementById('cam_item')
+     document.getElementById('cam_app')
    )
   )
 }
