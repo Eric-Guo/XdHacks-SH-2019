@@ -6,27 +6,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-import { CamPlay } from '../components/cam_play'
-import { CamProgress } from '../components/cam_progress'
-
-
-const CamItem = (props) => {
-  return (
-  <div className="player">
-    <CamPlay />
-    <CamProgress />
-  </div>
-  )
-}
+import { CamApp } from '../components/cam_app'
 
 const render_cam_item = () => {
   return (
    ReactDOM.render(
-     <CamItem name="React" />,
+     <CamApp />,
      document.getElementById('cam_item')
    )
   )
 }
 
 document.addEventListener('DOMContentLoaded', render_cam_item)
-
