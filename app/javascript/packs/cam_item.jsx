@@ -1,4 +1,4 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
+// Run this example by adding <%= javascript_pack_tag 'cam_item' %> to the head of your layout file,
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
@@ -12,7 +12,7 @@ const CamItem = (props) => {
     <div className="player__top">
       <div className="player-cover">
         <span>
-          <div className="player-cover__item" style="background-image: url(&quot;https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg&quot;);"></div>
+          <div className="player-cover__item" style={{ backgroundImage: "url('https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg')"}}></div>
         </span>
       </div>
     </div>
