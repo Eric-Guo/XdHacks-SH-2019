@@ -65,8 +65,8 @@ export class CamApp extends Component {
       .then(() => this.delay(1000))
       // use throttling to reduce the load on the client
       .then(() => {
-        _.throttle(this.detectFace, 50)
-        this.timer = setInterval(this.detectFace, 200);
+        _.throttle(this.detectFace, 100)
+        this.timer = setInterval(this.detectFace, 300);
       })
       .catch(console.log)
   }
