@@ -34,6 +34,7 @@ export class CamApp extends Component {
       face_detector_option: getFaceDetectorOptions(),
       face_age: null,
       face_gender: null,
+      face_count: 0
     };
     this.calculateRecommandItem = this.calculateRecommandItem.bind(this);
     this.handleGoPrev = this.handleGoPrev.bind(this);
@@ -99,7 +100,10 @@ export class CamApp extends Component {
           result.detection.box.bottomLeft
         ).draw(canvas)
 
-        _.throttle(this.calculateRecommandItem(age, gender), 5000);
+        this.setState({ face_count: this.state.face_count + 1 });
+        if (this.state.face_count % 30 == 0) {
+          this.calculateRecommandItem(age, gender);
+        }
       }
 
       return null;
