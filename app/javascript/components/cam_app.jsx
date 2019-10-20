@@ -35,6 +35,7 @@ export class CamApp extends Component {
       face_age: null,
       face_gender: null,
     };
+    this.calculateRecommandItem = this.calculateRecommandItem.bind(this);
     this.handleGoPrev = this.handleGoPrev.bind(this);
     this.handleGoNext = this.handleGoNext.bind(this);
   }
@@ -98,7 +99,7 @@ export class CamApp extends Component {
           result.detection.box.bottomLeft
         ).draw(canvas)
 
-        this.setState({ face_age: age, face_gender: gender });
+        this.calculateRecommandItem(age, gender);
       }
 
       return null;
@@ -110,6 +111,10 @@ export class CamApp extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
+  }
+
+  calculateRecommandItem(age, gender) {
+    this.setState({ face_age: age, face_gender: gender });
   }
 
   handleGoPrev() {
