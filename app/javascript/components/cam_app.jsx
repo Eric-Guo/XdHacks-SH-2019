@@ -31,7 +31,9 @@ export class CamApp extends Component {
       item_no: 1,
       modelsLoaded: false,
       webcamAllowed: null,
-      fact_detector_option: getFaceDetectorOptions()
+      face_detector_option: getFaceDetectorOptions(),
+      face_age: null,
+      face_gender: null,
     };
     this.handleGoPrev = this.handleGoPrev.bind(this);
     this.handleGoNext = this.handleGoNext.bind(this);
@@ -68,7 +70,7 @@ export class CamApp extends Component {
       // use throttling to reduce the load on the client
       .then(() => {
         _.throttle(this.detectFace, 100)
-        this.timer = setInterval(this.detectFace, 300);
+        this.timer = setInterval(this.detectFace, 200);
       })
       .catch(console.log)
   }
@@ -76,7 +78,7 @@ export class CamApp extends Component {
   detectFace = async () => {
     try {
       const videoEl = $('#inputVideo').get(0)
-      const result = await faceapi.detectSingleFace(videoEl, this.state.fact_detector_option).withAgeAndGender();
+      const result = await faceapi.detectSingleFace(videoEl, this.state.face_detector_option).withAgeAndGender();
       if (result) {
         const canvas = $('#overlay').get(0)
         const dims = faceapi.matchDimensions(canvas, videoEl, true)
@@ -95,6 +97,8 @@ export class CamApp extends Component {
           ],
           result.detection.box.bottomLeft
         ).draw(canvas)
+
+        this.setState({ face_age: age, face_gender: gender });
       }
 
       return null;
@@ -128,21 +132,23 @@ export class CamApp extends Component {
       <div className="player">
         <CamPlay
           item_no={ this.state.item_no }
-          onPrev={this.handleGoPrev}
-          onNext={this.handleGoNext}
+          onPrev={ this.handleGoPrev }
+          onNext={ this.handleGoNext }
         />
         <CamProgress />
       </div>
     </div>
   </div>
   <aside className="col-md-5 p-0">
+    {(!this.state.webcamAllowed) ? <div className="p-0"><p>请允许访问摄像头，以便程序可以识别您。</p></div> : null}
     <div className="p-0">
-      <video autoPlay width={500} height={375} ref={this.webcam} id="inputVideo" />
+      {(this.state.modelsLoaded) ? <video autoPlay width={500} height={375} ref={this.webcam} id="inputVideo" /> : <p>正在下载模型，请稍后</p>}
       <canvas id="overlay" />
     </div>
     <div className="p-3 mb-3 bg-light rounded">
       <h4 className="font-italic">识别结果</h4>
-      <p className="mb-0">会自动依据fact-api的识别结果推荐相应产品。</p>
+      <p className="mb-0">年龄：{ faceapi.round(this.state.face_age, 0) }</p>
+      <p className="mb-0">性别：{ this.state.face_gender }</p>
     </div>
   </aside>
 </div>
