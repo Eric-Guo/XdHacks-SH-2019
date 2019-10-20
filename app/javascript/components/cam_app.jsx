@@ -114,6 +114,24 @@ export class CamApp extends Component {
   }
 
   calculateRecommandItem(age, gender) {
+    if(gender == 'female') {
+      if (age <= 24) {
+        this.setState({ item_no: '24_female' });
+      } else if (age <= 28) {
+        this.setState({ item_no: '28_female' });
+      } else if (age <= 32) {
+        this.setState({ item_no: '32_female' });
+      } else {
+        this.setState({ item_no: 'old_female' });
+      }
+    } else {
+      if (age <= 30) {
+        this.setState({ item_no: 'young_male' });
+      } else {
+        this.setState({ item_no: 'old_male' });
+      }
+    }
+
     this.setState({ face_age: age, face_gender: gender });
   }
 
