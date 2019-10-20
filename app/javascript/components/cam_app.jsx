@@ -17,7 +17,7 @@ function getFaceDetectorOptions() {
 let predictedAges = []
 
 function interpolateAgePredictions(age) {
-  predictedAges = [age].concat(predictedAges).slice(0, 30)
+  predictedAges = [age].concat(predictedAges).slice(0, 60)
   const avgPredictedAge = predictedAges.reduce((total, a) => total + a) / predictedAges.length
   return avgPredictedAge
 }
@@ -125,7 +125,7 @@ export class CamApp extends Component {
         this.setState({ item_no: 'old_female' });
       }
     } else {
-      if (age <= 30) {
+      if (age <= 22) {
         this.setState({ item_no: '22_male' });
       } else if (age <= 24) {
         this.setState({ item_no: '24_male' });
