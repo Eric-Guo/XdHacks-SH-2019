@@ -2,10 +2,7 @@
   background-color: #f8f9fa;
 }
 
-#videoElement {
-  transform: rotateY(180deg);
-  width: 500px;
-  height: 375px;
+#inputVideo {
   background-color: #666;
   border-radius: 4px;
 }
@@ -14,4 +11,6 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 500px;
+  height: 375px;
 }

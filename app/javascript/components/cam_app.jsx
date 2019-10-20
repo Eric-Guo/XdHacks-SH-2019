@@ -133,14 +133,14 @@ export class CamApp extends Component {
       </div>
     </div>
   </div>
-  <aside className="col-md-5">
-    <div className="p-4 mb-3 bg-light rounded">
+  <aside className="col-md-5 p-0">
+    <div className="p-0">
+      <video autoPlay width={500} height={375} ref={this.webcam} id="inputVideo" />
+      <canvas id="overlay" />
+    </div>
+    <div className="p-3 mb-3 bg-light rounded">
       <h4 className="font-italic">识别结果</h4>
       <p className="mb-0">会自动依据fact-api的识别结果推荐相应产品。</p>
-    </div>
-    <div className="p-1">
-      <video autoPlay width={640} height={480} ref={this.webcam} id="inputVideo" />
-      <canvas id="overlay" />
     </div>
   </aside>
 </div>
