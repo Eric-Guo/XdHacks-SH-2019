@@ -30,11 +30,13 @@ export class CamApp extends Component {
     this.state = {
       item_no: 1,
       modelsLoaded: false,
-      webcamAllowed: null
+      webcamAllowed: null,
+      fact_detector_option: getFaceDetectorOptions()
     };
     this.handleGoPrev = this.handleGoPrev.bind(this);
     this.handleGoNext = this.handleGoNext.bind(this);
   }
+
   webcam = React.createRef();
 
   delay = ms => new Promise(_ => setTimeout(_, ms));
@@ -74,7 +76,7 @@ export class CamApp extends Component {
   detectFace = async () => {
     try {
       const videoEl = $('#inputVideo').get(0)
-      const result = await faceapi.detectSingleFace(videoEl, getFaceDetectorOptions()).withAgeAndGender();
+      const result = await faceapi.detectSingleFace(videoEl, this.state.fact_detector_option).withAgeAndGender();
       if (result) {
         const canvas = $('#overlay').get(0)
         const dims = faceapi.matchDimensions(canvas, videoEl, true)
