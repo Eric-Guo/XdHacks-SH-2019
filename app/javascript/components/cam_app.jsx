@@ -99,7 +99,7 @@ export class CamApp extends Component {
           result.detection.box.bottomLeft
         ).draw(canvas)
 
-        this.calculateRecommandItem(age, gender);
+        _.throttle(this.calculateRecommandItem(age, gender), 6000);
       }
 
       return null;
@@ -162,7 +162,9 @@ export class CamApp extends Component {
           onPrev={ this.handleGoPrev }
           onNext={ this.handleGoNext }
         />
-        <CamProgress />
+        <CamProgress
+          item_no={ this.state.item_no }
+        />
       </div>
     </div>
   </div>
