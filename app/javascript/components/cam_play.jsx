@@ -39,7 +39,7 @@ export class CamPlay extends Component {
             <img src="/svg/icon-next.svg" className="icon" />
           </div>
           <div className="player-controls__item -xl js-play">
-            <img src="/svg/icon-play.svg" className="icon" />
+            <img src="/img/logo.jpeg" className="icon" />
           </div>
         </div>
       </div>
